@@ -1,60 +1,38 @@
 # 🔥 Incremental Socket Fuzzer
 
-Incremental Socket Fuzzer is a Python-based tool that sends
-random payloads of increasing size to a TCP service
-until the service crashes or stops responding.
+Incremental Socket Fuzzer is a Python-based fuzzing tool that sends
+random data to a TCP service while gradually increasing payload size.
 
-This tool is designed for learning how crashes happen,
-not for exploitation.
+The goal is to identify the input size at which a service crashes.
 
 ---
 
-## What This Tool Does
+## What This Tool Demonstrates
 
-- Connects to a TCP service
-- Sends random data
-- Increases payload size step by step
-- Stops when the target crashes
-- Reports the payload size that caused the crash
-
-Slow pressure.
-Clear feedback.
-Simple logic.
-
----
-
-## Why This Exists
-
-Because buffer overflows and crashes don’t happen magically.
-They happen when software receives more input than it can handle.
-
-This tool helps you **see that breaking point**.
+- How network services handle external input
+- Why size limits matter
+- How crashes are discovered through fuzzing
+- The first step of vulnerability research
 
 ---
 
 ## Usage
 
-Run the script after updating target IP and port  
-python socket_fuzzer.py
+python socket_fuzzer.py <ip> <port> <start_size> <step>
 
-Make sure the service:
-- Is running in a lab
-- Is intentionally vulnerable
-- Is monitored for crashes
+Example  
+python socket_fuzzer.py 127.0.0.1 9999 100 100
 
 ---
 
-## Important Notes
+## Notes
 
-- This is NOT an exploit
-- No offsets or shellcode
-- Just fuzzing behaviour
-- Intended only for controlled environments
+- This is not an exploit
+- No shellcode, offsets, or memory control
+- Use only in lab environments
 
 ---
 
 ## Final Thought
 
-Crash first.
-Understand later.
-That’s how vulnerability research begins.
+Fuzzing is about patience, not power.
